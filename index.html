@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perhitungan Nilai Mahasiswa</title>
+    <script>
+        function hitungNilai() {
+            // Mengambil nilai input dari form
+            var presensi = parseFloat(document.getElementById("presensi").value) || 0;
+            var tugas = parseFloat(document.getElementById("tugas").value) || 0;
+            var uts = parseFloat(document.getElementById("uts").value) || 0;
+            var uas = parseFloat(document.getElementById("uas").value) || 0;
+
+            // Menghitung nilai akhir
+            var nilaiAkhir = (presensi * 0.1) + (tugas * 0.2) + (uts * 0.3) + (uas * 0.4);
+            var grade;
+
+            // Menentukan grade berdasarkan nilai akhir
+            if (nilaiAkhir > 80) {
+                grade = "A";
+            } else if (nilaiAkhir > 75) {
+                grade = "B+";
+            } else if (nilaiAkhir > 70) {
+                grade = "B";
+            } else if (nilaiAkhir > 65) {
+                grade = "B-";
+            } else if (nilaiAkhir > 60) {
+                grade = "C+";
+            } else if (nilaiAkhir > 55) {
+                grade = "C";
+            } else if (nilaiAkhir > 50) {
+                grade = "C-";
+            } else if (nilaiAkhir > 30) {
+                grade = "D";
+            } else {
+                grade = "E";
+            }
+
+            // Menampilkan hasil perhitungan
+            document.getElementById("hasil").innerHTML = "Nilai Akhir: " + nilaiAkhir.toFixed(2) + "<br>Grade: " + grade;
+        }
+    </script>
+</head>
+<body>
+    <h2>Perhitungan Nilai Mahasiswa</h2>
+    <form>
+        Presensi : <input type="number" id="presensi" min="0" max="100" required><br>
+        Tugas : <input type="number" id="tugas" min="0" max="100" required><br>
+        UTS : <input type="number" id="uts" min="0" max="100" required><br>
+        UAS : <input type="number" id="uas" min="0" max="100" required><br><br>
+        <button type="button" onclick="hitungNilai()">Hitung Nilai</button>
+    </form>
+    <p id="hasil"></p>
+</body>
+</html>
